@@ -1,0 +1,45 @@
+version: 0.1.0
+
+db:
+  host: localhost # Optional
+  port: 5432 # Optional
+  user: pantomath # Optional
+  password: pantomath # Optional
+  name: pantomath # Optional
+
+providers:
+  aws:
+    settings:
+      accounts:
+        - profile: account1
+        - profile: account2
+          assume_role: arn:aws:iam::1111111111111:role/MyRole
+    sources:
+      - aws_cloudfront_distributions
+      - aws_cloudtrail_trails
+      - aws_dax_clusters
+      - aws_docdb_clusters
+      - aws_dynamodb_tables
+      - aws_ebs_snapshots
+      - aws_ebs_volumes
+      - aws_ec2_alb
+      - aws_ec2_clb
+      - aws_ec2_eip
+      - aws_ec2_glb
+      - aws_ec2_images
+      - aws_ec2_instances
+      - aws_ec2_nat_gateways
+      - aws_ec2_nlb
+      - aws_ec2_vpc_endpoints
+      - aws_ecs_clusters
+      - aws_efs_file_systems
+      - aws_eks_clusters
+      - aws_elasticache_clusters
+      - aws_emr_clusters
+      - aws_es_domains
+      - aws_lambda_functions
+      - aws_rds_instances
+      - aws_rds_snapshots
+      - aws_redshift_clusters
+      - aws_route53_domains
+      - aws_s3_buckets

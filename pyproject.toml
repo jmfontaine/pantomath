@@ -1,0 +1,47 @@
+[tool.poetry]
+name = "pantomath"
+version = "0.1.0"
+description = "Easily collect, analyze, and explore FinOps data"
+license = "SSPL-1.0"
+authors = ["Jean-Marc Fontaine <jm@jmfontaine.net>"]
+readme = "README.md"
+homepage = "https://github.com/jmfontaine/pantomath"
+repository = "https://github.com/jmfontaine/pantomath"
+keywords = ["finops", "cloud", "aws"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+aiobotocore = "^1.4.1"
+aiostream = "^0.4.3"
+asyncpg = "^0.24.0"
+click = "^8.0.1"
+confuse = "^1.5.0"
+jmespath = "^0.10.0"
+loguru = "^0.5.3"
+rich = "^10.10.0"
+SQLAlchemy = "^1.4.23"
+
+[tool.poetry.dev-dependencies]
+black = "^21.8b0"
+flake8 = "^3.9.2"
+isort = "^5.9.3"
+mypy = "^0.910"
+pre-commit = "^2.15.0"
+pytest = "^5.2"
+tox = "^3.24.4"
+types-python-dateutil = "^2.8.0"
+
+[tool.poetry.scripts]
+pantomath = "pantomath.cli:cli"
+
+[tool.isort]
+ensure_newline_before_comments = true
+force_grid_wrap = 0
+include_trailing_comma = true
+line_length = 88
+multi_line_output = 3
+use_parentheses = true
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

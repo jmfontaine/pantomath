@@ -1,0 +1,28 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.0.1
+  hooks:
+    - id: check-added-large-files
+    - id: check-case-conflict
+    - id: check-merge-conflict
+    - id: check-toml
+    - id: detect-private-key
+    - id: end-of-file-fixer
+    - id: fix-byte-order-marker
+    - id: trailing-whitespace
+- repo: local
+  hooks:
+    - id: black
+      name: black
+      entry: poetry run black
+      language: system
+      types: [python]
+    - id: flake8
+      name: flake8
+      entry: poetry run flake8
+      language: system
+      types: [python]
+- repo: https://github.com/zricethezav/gitleaks
+  rev: v7.6.1
+  hooks:
+    - id: gitleaks

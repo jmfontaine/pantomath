@@ -32,7 +32,7 @@ format: isort black
 ## Configure local development environment
 install:
 	poetry install
-	poetry run pre-commit install
+	poetry run pre-commit install --hook-type commit-msg --hook-type pre-commit
 
 ## Run isort against the Python source code
 isort:

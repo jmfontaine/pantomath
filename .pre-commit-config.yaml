@@ -26,3 +26,7 @@ repos:
   rev: v7.6.1
   hooks:
     - id: gitleaks
+- repo: https://github.com/jorisroovers/gitlint
+  rev: v0.15.1
+  hooks:
+    - id: gitlint

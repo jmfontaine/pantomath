@@ -38,6 +38,11 @@ repos:
       entry: poetry run isort
       language: system
       types: [python]
+    - id: mypy
+      name: mypy
+      entry: poetry run mypy .
+      language: system
+      types: [python]
 - repo: https://github.com/zricethezav/gitleaks
   rev: v7.6.1
   hooks:

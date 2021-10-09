@@ -25,6 +25,7 @@ SQLAlchemy = "^1.4.23"
 black = "^21.8b0"
 commitizen = "^2.20.0"
 flake8 = "^3.9.2"
+interrogate = "^1.5.0"
 isort = "^5.9.3"
 mypy = "^0.910"
 pre-commit = "^2.15.0"
@@ -42,6 +43,13 @@ tag_format = "$version"
 update_changelog_on_bump = true
 version = "0.1.0"
 version_files = ["pyproject.toml:tool.poetry.version"]
+
+[tool.interrogate]
+badge-style = "plastic"
+# KLUDGE: This will be set to 100 when we get there.
+# Until then, set it to the current coverage to avoid regressions.
+fail-under = 2.2
+generate-badge = "assets/badges/interrogate.svg"
 
 [tool.isort]
 ensure_newline_before_comments = true

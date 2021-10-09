@@ -27,6 +27,12 @@ repos:
       entry: poetry run flake8
       language: system
       types: [python]
+    - id: interrogate
+      name: interrogate
+      entry: poetry run interrogate
+      language: system
+      types_or: [python, toml]
+      pass_filenames: false # KLUDGE: https://github.com/econchick/interrogate/issues/60#issuecomment-735436566
 - repo: https://github.com/zricethezav/gitleaks
   rev: v7.6.1
   hooks:

@@ -26,7 +26,9 @@ repos:
   rev: v7.6.1
   hooks:
     - id: gitleaks
-- repo: https://github.com/jorisroovers/gitlint
-  rev: v0.15.1
-  hooks:
-    - id: gitlint
+- hooks:
+  - id: commitizen
+    stages:
+      - commit-msg
+  repo: https://github.com/commitizen-tools/commitizen
+  rev: v2.20.0

@@ -23,9 +23,9 @@ def to_sqlalchemy(*args, **kwargs):
     return _to_sqlalchemy.pipe(*args, **kwargs)
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True)  # type: ignore
 class Provider(ABC):
-    config: dict = field(default_factory={})
+    config: dict = field(default_factory={})  # type: ignore
     db_engine: AsyncEngine = None
     log_level: int = field(default=logging.ERROR)
 

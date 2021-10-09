@@ -1,3 +1,5 @@
+from typing import Dict, List
+
 from sqlalchemy import Boolean, DateTime, Integer
 from sqlalchemy.dialects.postgresql import ENUM, JSONB
 
@@ -78,9 +80,9 @@ class AwsEbsSnapshotsDataSource(AwsDataSource):
         ),
     ]
 
-    enrich_config = {}
+    enrich_config: Dict = {}
 
-    excluded_default_columns = []
+    excluded_default_columns: List[str] = []
 
     extract_config = {
         "method_name": "describe_snapshots",

@@ -1,3 +1,5 @@
+from typing import Dict, List
+
 from sqlalchemy import Boolean, DateTime, Integer, Text
 from sqlalchemy.dialects.postgresql import ARRAY, JSONB
 
@@ -84,7 +86,7 @@ class AwsDocDbClustersDataSource(AwsDataSource):
         ),
     ]
 
-    enrich_config = {
+    enrich_config: Dict = {
         "tags": {
             "method_name": "list_tags_for_resource",
             "method_parameters": {"ResourceName": "{DBClusterArn}"},
@@ -93,7 +95,7 @@ class AwsDocDbClustersDataSource(AwsDataSource):
         },
     }
 
-    excluded_default_columns = []
+    excluded_default_columns: List[str] = []
 
     extract_config = {
         "method_name": "describe_db_clusters",

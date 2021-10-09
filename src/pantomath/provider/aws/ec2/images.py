@@ -1,3 +1,5 @@
+from typing import Dict, List
+
 import dateutil
 from sqlalchemy import Boolean, DateTime
 from sqlalchemy.dialects.postgresql import ENUM, JSONB
@@ -171,9 +173,9 @@ class AwsEc2ImagesDataSource(AwsDataSource):
         ),
     ]
 
-    enrich_config = {}
+    enrich_config: Dict = {}
 
-    excluded_default_columns = []
+    excluded_default_columns: List[str] = []
 
     extract_config = {
         "method_name": "describe_images",

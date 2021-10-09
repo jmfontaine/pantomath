@@ -1,4 +1,6 @@
-import dateutil
+from typing import Dict, List
+
+import dateutil.parser
 from sqlalchemy import DateTime, Text
 from sqlalchemy.dialects.postgresql import ARRAY, BIGINT, ENUM, JSONB
 from sqlalchemy.sql.sqltypes import Integer
@@ -105,7 +107,7 @@ class AwsLambdaFunctionsDataSource(AwsDataSource):
         ),
     ]
 
-    enrich_config = {
+    enrich_config: Dict = {
         "tags": {
             "method_name": "list_tags",
             "method_parameters": {"Resource": "{FunctionArn}"},
@@ -114,7 +116,7 @@ class AwsLambdaFunctionsDataSource(AwsDataSource):
         },
     }
 
-    excluded_default_columns = []
+    excluded_default_columns: List[str] = []
 
     extract_config = {
         "method_name": "list_functions",

@@ -1,3 +1,5 @@
+from typing import Dict, List
+
 from sqlalchemy.dialects.postgresql import JSONB
 
 from pantomath.datasource import DataSourceColumn
@@ -32,9 +34,9 @@ class AwsEc2EipDataSource(AwsDataSource):
         ),
     ]
 
-    enrich_config = {}
+    enrich_config: Dict = {}
 
-    excluded_default_columns = []
+    excluded_default_columns: List[str] = []
 
     extract_config = {
         "method_name": "describe_addresses",

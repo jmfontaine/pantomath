@@ -1,3 +1,5 @@
+from typing import Dict, List
+
 from sqlalchemy import DateTime
 from sqlalchemy.dialects.postgresql import JSONB
 
@@ -60,7 +62,7 @@ class AwsCloudfrontDistributionsDataSource(AwsDataSource):
         ),
     ]
 
-    enrich_config = {
+    enrich_config: Dict = {
         "tags": {
             "method_name": "list_tags_for_resource",
             "method_parameters": {"Resource": "{ARN}"},
@@ -69,7 +71,7 @@ class AwsCloudfrontDistributionsDataSource(AwsDataSource):
         },
     }
 
-    excluded_default_columns = []
+    excluded_default_columns: List[str] = []
 
     extract_config = {
         "method_name": "list_distributions",

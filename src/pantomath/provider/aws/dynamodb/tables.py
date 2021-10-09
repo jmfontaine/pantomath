@@ -1,3 +1,5 @@
+from typing import Dict, List
+
 from sqlalchemy import DateTime
 from sqlalchemy.dialects.postgresql import BIGINT, ENUM, JSONB
 
@@ -73,7 +75,7 @@ class AwsDynamodbTablesDataSource(AwsDataSource):
         ),
     ]
 
-    enrich_config = {
+    enrich_config: Dict = {
         "table": {
             "method_name": "describe_table",
             "method_parameters": {"TableName": "{Name}"},
@@ -90,7 +92,7 @@ class AwsDynamodbTablesDataSource(AwsDataSource):
         },
     }
 
-    excluded_default_columns = []
+    excluded_default_columns: List[str] = []
 
     extract_config = {
         "method_name": "list_tables",

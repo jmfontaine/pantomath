@@ -4,6 +4,7 @@ import dataclasses
 import logging
 from copy import Error
 from dataclasses import dataclass, field
+from typing import Union
 
 import aiobotocore.session
 import aiostream
@@ -149,7 +150,7 @@ async def get_session(account_config):
     return session
 
 
-def beautify_tags(tags: dict) -> dict:
+def beautify_tags(tags: dict) -> Union[dict, None]:
     if not tags:
         return None
 

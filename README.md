@@ -1,5 +1,6 @@
 # Pantomath
 
+![Build Status](https://github.com/jmfontaine/pantomath/actions/workflows/build.yml/badge.svg)
 ![Interrogate](assets/badges/interrogate.svg)
 
 Pantomath is a command-line application that helps you collect, analyze, and explore all the data you need to optimize the cost of your cloud.

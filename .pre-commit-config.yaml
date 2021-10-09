@@ -33,6 +33,11 @@ repos:
       language: system
       types_or: [python, toml]
       pass_filenames: false # KLUDGE: https://github.com/econchick/interrogate/issues/60#issuecomment-735436566
+    - id: isort
+      name: isort
+      entry: poetry run isort
+      language: system
+      types: [python]
 - repo: https://github.com/zricethezav/gitleaks
   rev: v7.6.1
   hooks:

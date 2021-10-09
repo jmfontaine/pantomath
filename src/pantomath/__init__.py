@@ -4,11 +4,10 @@ import logging
 
 import click
 import confuse
+import pkg_resources
 from sqlalchemy.ext.asyncio import create_async_engine
 
 from pantomath.provider import providers
-
-import pkg_resources
 
 __version__ = pkg_resources.get_distribution(__name__).version
 

@@ -1,3 +1,5 @@
+from typing import Dict, List
+
 from sqlalchemy import DateTime
 from sqlalchemy.dialects.postgresql import ENUM, JSONB
 
@@ -66,9 +68,9 @@ class AwsEc2VpcEndpointsDataSource(AwsDataSource):
         ),
     ]
 
-    enrich_config = {}
+    enrich_config: Dict = {}
 
-    excluded_default_columns = []
+    excluded_default_columns: List[str] = []
 
     extract_config = {
         "method_name": "describe_vpc_endpoints",

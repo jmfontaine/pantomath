@@ -1,3 +1,5 @@
+from typing import Dict, List
+
 from sqlalchemy import Integer
 from sqlalchemy.dialects.postgresql import ENUM, JSONB
 
@@ -69,7 +71,7 @@ class AwsEcsClustersDataSource(AwsDataSource):
         ),
     ]
 
-    enrich_config = {
+    enrich_config: Dict = {
         "cluster": {
             "method_name": "describe_clusters",
             "method_parameters": {
@@ -81,7 +83,7 @@ class AwsEcsClustersDataSource(AwsDataSource):
         },
     }
 
-    excluded_default_columns = []
+    excluded_default_columns: List[str] = []
 
     extract_config = {
         "method_name": "list_clusters",

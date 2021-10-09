@@ -1,3 +1,5 @@
+from typing import Dict, List
+
 from sqlalchemy import DateTime, Text
 from sqlalchemy.dialects.postgresql import ARRAY, JSONB
 
@@ -52,7 +54,7 @@ class AwsEc2ClbDataSource(AwsDataSource):
         ),
     ]
 
-    enrich_config = {
+    enrich_config: Dict = {
         "tags": {
             "method_name": "describe_tags",
             "method_parameters": {"LoadBalancerNames": ["{LoadBalancerName}"]},
@@ -61,7 +63,7 @@ class AwsEc2ClbDataSource(AwsDataSource):
         },
     }
 
-    excluded_default_columns = []
+    excluded_default_columns: List[str] = []
 
     extract_config = {
         "method_name": "describe_load_balancers",

@@ -1,3 +1,5 @@
+from typing import Dict, List
+
 from sqlalchemy import DateTime
 from sqlalchemy.dialects.postgresql import JSONB
 
@@ -48,7 +50,7 @@ class AwsEksClustersDataSource(AwsDataSource):
         ),
     ]
 
-    enrich_config = {
+    enrich_config: Dict = {
         "cluster": {
             "method_name": "describe_cluster",
             "method_parameters": {"name": "{Name}"},
@@ -57,7 +59,7 @@ class AwsEksClustersDataSource(AwsDataSource):
         },
     }
 
-    excluded_default_columns = []
+    excluded_default_columns: List[str] = []
 
     extract_config = {
         "method_name": "list_clusters",

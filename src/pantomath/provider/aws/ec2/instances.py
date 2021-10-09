@@ -1,3 +1,5 @@
+from typing import Dict, List
+
 from sqlalchemy import Boolean, DateTime
 from sqlalchemy.dialects.postgresql import ENUM, INET, JSONB
 
@@ -187,9 +189,9 @@ class AwsEc2InstancesDataSource(AwsDataSource):
         ),
     ]
 
-    enrich_config = {}
+    enrich_config: Dict = {}
 
-    excluded_default_columns = []
+    excluded_default_columns: List[str] = []
 
     extract_config = {
         "method_name": "describe_instances",

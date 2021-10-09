@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
-from typing import List, Union
+from typing import Callable, List, Union
 
 import sqlalchemy
 
@@ -9,16 +9,16 @@ import sqlalchemy
 class DataSourceColumn:
     name: str
     description: str
-    hydrate: Union[str, callable]
+    hydrate: Union[str, Callable]
     type: sqlalchemy.types.TypeEngine = sqlalchemy.Text
     index: bool = False
-    transform: callable = None
+    transform: Union[Callable, None] = None
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True)  # type: ignore
 class DataSource(ABC):
-    columns: List[DataSourceColumn] = field(default=False, init=False)
-    excluded_default_columns: List[str] = field(default=False, init=False)
+    columns: List[DataSourceColumn] = field(default=False, init=False)  # type: ignore
+    excluded_default_columns: List[str] = field(default=False, init=False)  # type: ignore # noqa: E501
 
     @abstractmethod
     async def extract(self):

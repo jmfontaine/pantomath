@@ -1,3 +1,5 @@
+from typing import Dict, List
+
 from sqlalchemy.dialects.postgresql import JSONB
 
 from pantomath.provider.aws import (
@@ -54,7 +56,7 @@ class AwsEsDomainsDataSource(AwsDataSource):
         ),
     ]
 
-    enrich_config = {
+    enrich_config: Dict = {
         "domain": {
             "method_name": "describe_elasticsearch_domains",
             "method_parameters": {"DomainNames": ["{DomainName}"]},
@@ -71,7 +73,7 @@ class AwsEsDomainsDataSource(AwsDataSource):
         },
     }
 
-    excluded_default_columns = []
+    excluded_default_columns: List[str] = []
 
     extract_config = {
         "method_name": "list_domain_names",

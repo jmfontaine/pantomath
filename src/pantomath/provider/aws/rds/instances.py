@@ -1,3 +1,5 @@
+from typing import Dict, List
+
 from sqlalchemy import Boolean, DateTime
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.sql.sqltypes import Integer
@@ -127,9 +129,9 @@ class AwsRdsInstancesDataSource(AwsDataSource):
         ),
     ]
 
-    enrich_config = {}
+    enrich_config: Dict = {}
 
-    excluded_default_columns = []
+    excluded_default_columns: List[str] = []
 
     extract_config = {
         "method_name": "describe_db_instances",

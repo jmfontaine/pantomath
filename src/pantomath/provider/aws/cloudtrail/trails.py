@@ -1,3 +1,5 @@
+from typing import Dict, List
+
 from sqlalchemy import Boolean
 
 from pantomath.provider.aws import AwsDataSource, DataSourceColumn, data_sources
@@ -79,9 +81,9 @@ class AwsCloudtrailTrailsDataSource(AwsDataSource):
         ),
     ]
 
-    enrich_config = {}
+    enrich_config: Dict = {}
 
-    excluded_default_columns = []
+    excluded_default_columns: List[str] = []
 
     extract_config = {
         "method_name": "describe_trails",

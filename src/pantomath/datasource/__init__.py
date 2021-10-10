@@ -10,7 +10,7 @@ class DataSourceColumn:
     name: str
     description: str
     hydrate: Union[str, Callable]
-    type: sqlalchemy.types.TypeEngine = sqlalchemy.Text
+    type: sqlalchemy.types.TypeEngine = sqlalchemy.Text  # noqa A003
     index: bool = False
     transform: Union[Callable, None] = None
 

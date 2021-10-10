@@ -1,5 +1,6 @@
 import asyncio
 import builtins
+import contextlib
 import dataclasses
 import logging
 from copy import Error
@@ -72,7 +73,7 @@ async def call_botocore_method(
                         yield item
     except botocore.exceptions.ClientError as error:
         error_code = error.response["Error"]["Code"]
-        if error_code in expected_errors:
+        if error_code in expected_errors:  # noqa: SIM106
             item = {}
             if add_metadata:
                 item["metadata"] = {
@@ -258,11 +259,8 @@ class AWSProvider(Provider):
                     | flatmap(data_source.transform)
                     | to_sqlalchemy(conn, table)
                 )
-                try:
+                with contextlib.suppress(aiostream.core.StreamEmpty):
                     await pipeline
-                except aiostream.core.StreamEmpty:
-                    # No results. Ignore.
-                    pass
 
             # KLUDGE: Must yield something so that this function is an async generator
             yield None

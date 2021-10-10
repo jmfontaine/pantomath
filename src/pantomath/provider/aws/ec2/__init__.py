@@ -1,4 +1,4 @@
-from . import (  # noqa: E402,F401
+from pantomath.provider.aws.ec2 import (  # noqa: E402,F401
     alb,
     clb,
     eip,

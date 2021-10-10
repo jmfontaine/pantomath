@@ -1,1 +1,1 @@
-from . import file_systems  # noqa: E402,F401
+from pantomath.provider.aws.efs import file_systems  # noqa: E402,F401

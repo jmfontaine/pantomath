@@ -1,8 +1,7 @@
 from typing import Dict
 
 from pantomath.provider.aws import data_sources
-
-from .alb import AwsEc2AlbDataSource
+from pantomath.provider.aws.ec2.alb import AwsEc2AlbDataSource
 
 
 @data_sources.register("aws_ec2_nlb")

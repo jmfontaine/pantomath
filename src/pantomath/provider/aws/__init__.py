@@ -136,9 +136,8 @@ async def get_available_regions(session, service_name):
             ],
         )
     account_regions = sorted([r["RegionName"] for r in response["Regions"]])
-    regions = list(set.intersection(*map(set, [service_regions, account_regions])))
 
-    return regions
+    return list(set.intersection(*map(set, [service_regions, account_regions])))
 
 
 async def get_session(account_config):
@@ -147,7 +146,7 @@ async def get_session(account_config):
     if account_config.assume_role:
         session = await assume_iam_role(account_config.assume_role, session)
 
-    return session
+    return session  # noqa: R504
 
 
 def beautify_tags(tags: dict) -> Union[dict, None]:
@@ -278,8 +277,6 @@ class AWSProvider(Provider):
                 )
 
         await flatten(get_coros(), task_limit=20)
-
-        return None
 
 
 class AwsDataSource(DataSource):

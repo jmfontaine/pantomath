@@ -24,7 +24,7 @@ from pantomath.registry import CachedRegistry
 data_sources = CachedRegistry()
 
 
-async def call_botocore_method(
+async def call_botocore_method(  # noqa: CFQ002
     session,
     account_id,
     region_name,
@@ -310,9 +310,9 @@ class AwsDataSource(DataSource):
         if hasattr(self, "__post_init__") and callable(self.__post_init__):
             self.__post_init__()
 
-    async def enrich(self, source):
+    async def enrich(self, source):  # noqa: CFQ004
         # TODO: Properly name this method
-        async def wrap_botocore(source, *args, **kwargs):
+        async def wrap_botocore(source, *args, **kwargs):  # noqa: CFQ004
             # Borrowed from https://stackoverflow.com/a/50815499
             def recursiveMap(something, func, *args, **kwargs):
                 if isinstance(something, dict):

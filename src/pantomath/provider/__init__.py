@@ -19,7 +19,7 @@ def to_sqlalchemy(*args, **kwargs):
         return stream.action(stream.chunks(source, chunk_size), run)
 
     # KLUDGE: Trick to avoid the need for calling the pipe method in the pipeline.
-    # to_sqlalchemy.pipe(arg1, arg2) become to_sqlalchemy(arg1, arg2)
+    # to_sqlalchemy.pipe(arg1, arg2) becomes to_sqlalchemy(arg1, arg2)
     return _to_sqlalchemy.pipe(*args, **kwargs)
 
 

@@ -12,17 +12,17 @@ class InterceptHandler(logging.Handler):
     def emit(self, record):
         # Get corresponding Loguru level if it exists
         try:
-            level = logger.level(record.levelname).name
+            level = logger.level(record.levelname).name  # noqa: SC200
         except ValueError:
-            level = record.levelno
+            level = record.levelno  # noqa: SC200
 
         # Find caller from where originated the logged message
-        frame, depth = logging.currentframe(), 2
+        frame, depth = logging.currentframe(), 2  # noqa: SC200
         while frame.f_code.co_filename == logging.__file__:
             frame = frame.f_back
             depth += 1
 
-        logger.opt(depth=depth, exception=record.exc_info).log(
+        logger.opt(depth=depth, exception=record.exc_info).log(  # noqa: SC200
             level, record.getMessage()
         )
 

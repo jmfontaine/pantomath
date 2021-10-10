@@ -93,7 +93,7 @@ async def assume_iam_role(iam_role_arn, session):
             RoleArn=iam_role_arn, RoleSessionName="pantomath"
         )
 
-        new_session = aiobotocore.session.AioSession()
+        new_session = aiobotocore.session.AioSession()  # noqa: SC200
         new_session.set_credentials(
             access_key=response["Credentials"]["AccessKeyId"],
             secret_key=response["Credentials"]["SecretAccessKey"],
@@ -141,7 +141,9 @@ async def get_available_regions(session, service_name):
 
 
 async def get_session(account_config):
-    session = aiobotocore.session.AioSession(profile=account_config.profile)
+    session = aiobotocore.session.AioSession(  # noqa: SC200
+        profile=account_config.profile
+    )
 
     if account_config.assume_role:
         session = await assume_iam_role(account_config.assume_role, session)

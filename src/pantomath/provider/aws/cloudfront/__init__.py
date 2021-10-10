@@ -1,1 +1,1 @@
-from . import distributions  # noqa: E402,F401
+from pantomath.provider.aws.cloudfront import distributions  # noqa: E402,F401

@@ -1,1 +1,1 @@
-from . import clusters  # noqa: E402,F401
+from pantomath.provider.aws.eks import clusters  # noqa: E402,F401

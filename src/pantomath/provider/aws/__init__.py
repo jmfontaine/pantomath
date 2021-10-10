@@ -381,7 +381,7 @@ class AwsDataSource(DataSource):
 
 
 # These imports must be at the end of the file to avoid dependency issues
-from . import (  # noqa: E402,F401
+from pantomath.provider.aws import (  # noqa: E402,F401
     cloudfront,
     cloudtrail,
     dax,

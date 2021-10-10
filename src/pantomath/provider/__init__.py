@@ -53,4 +53,4 @@ class AsyncIteratorWrapper:
 
 
 # These imports must be at the end of the file to avoid dependency issues
-from . import aws  # noqa: E402,F401
+from pantomath.provider import aws  # noqa: E402,F401

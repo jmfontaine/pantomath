@@ -362,6 +362,18 @@ eradicate = ">=2.0,<3.0"
 flake8 = ">=3.5,<4.0"
 
 [[package]]
+name = "flake8-functions"
+version = "0.0.6"
+description = "A flake8 extension that checks functions"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+mr-proper = "*"
+pytest = "*"
+
+[[package]]
 name = "flake8-mutable"
 version = "1.2.0"
 description = "mutable defaults flake8 extension"
@@ -556,6 +568,17 @@ description = "More routines for operating on iterables, beyond itertools"
 category = "dev"
 optional = false
 python-versions = ">=3.5"
+
+[[package]]
+name = "mr-proper"
+version = "0.0.6"
+description = "Package to find typos in russian text."
+category = "dev"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+stdlib-list = ">=0.5.0"
 
 [[package]]
 name = "multidict"
@@ -835,6 +858,17 @@ pymysql = ["pymysql (<1)", "pymysql"]
 sqlcipher = ["sqlcipher3-binary"]
 
 [[package]]
+name = "stdlib-list"
+version = "0.8.0"
+description = "A list of Python Standard Libraries (2.6-7, 3.2-9)."
+category = "dev"
+optional = false
+python-versions = "*"
+
+[package.extras]
+develop = ["sphinx"]
+
+[[package]]
 name = "tabulate"
 version = "0.8.9"
 description = "Pretty-print tabular data"
@@ -1020,7 +1054,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "965f28fa85e46da7ecb86574b4ad9e64ba2fdcf1cac1c38e4d179200642f1545"
+content-hash = "4847181a55ef4030f43000698692910d00013e9c3373aa998965a5f4ad702051"
 
 [metadata.files]
 aiobotocore = [
@@ -1182,6 +1216,10 @@ flake8-eradicate = [
     {file = "flake8-eradicate-1.1.0.tar.gz", hash = "sha256:f5917d6dbca352efcd10c15fdab9c55c48f0f26f6a8d47898b25d39101f170a8"},
     {file = "flake8_eradicate-1.1.0-py3-none-any.whl", hash = "sha256:d8e39b684a37c257a53cda817d86e2d96c9ba3450ddc292742623a5dfee04d9e"},
 ]
+flake8-functions = [
+    {file = "flake8_functions-0.0.6-py3-none-any.whl", hash = "sha256:7afa7979d20d28a3cde0c14b3fddf42beef23232620a641ad20dcc2de49eddf3"},
+    {file = "flake8_functions-0.0.6.tar.gz", hash = "sha256:6d42da93c4b13354a3973da7bf4e239225f9dba167e8a099fd647ae483ac3e24"},
+]
 flake8-mutable = [
     {file = "flake8-mutable-1.2.0.tar.gz", hash = "sha256:ee9b77111b867d845177bbc289d87d541445ffcc6029a0c5c65865b42b18c6a6"},
     {file = "flake8_mutable-1.2.0-py2-none-any.whl", hash = "sha256:38fd9dadcbcda6550a916197bc40ed76908119dabb37fbcca30873666c31d2d5"},
@@ -1329,6 +1367,9 @@ mccabe = [
 more-itertools = [
     {file = "more-itertools-8.10.0.tar.gz", hash = "sha256:1debcabeb1df793814859d64a81ad7cb10504c24349368ccf214c664c474f41f"},
     {file = "more_itertools-8.10.0-py3-none-any.whl", hash = "sha256:56ddac45541718ba332db05f464bebfb0768110111affd27f66e0051f276fa43"},
+]
+mr-proper = [
+    {file = "mr_proper-0.0.6.tar.gz", hash = "sha256:12da55d81f04dd0e8ede6f8a1d76e6e5026d3f758b7942c8c215e07d86227bd1"},
 ]
 multidict = [
     {file = "multidict-5.2.0-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:3822c5894c72e3b35aae9909bef66ec83e44522faf767c0ad39e0e2de11d3b55"},
@@ -1598,6 +1639,10 @@ sqlalchemy = [
     {file = "SQLAlchemy-1.4.25-cp39-cp39-win32.whl", hash = "sha256:6003771ea597346ab1e97f2f58405c6cacbf6a308af3d28a9201a643c0ac7bb3"},
     {file = "SQLAlchemy-1.4.25-cp39-cp39-win_amd64.whl", hash = "sha256:9ebe49c3960aa2219292ea2e5df6acdc425fc828f2f3d50b4cfae1692bcb5f02"},
     {file = "SQLAlchemy-1.4.25.tar.gz", hash = "sha256:1adf3d25e2e33afbcd48cfad8076f9378793be43e7fec3e4334306cac6bec138"},
+]
+stdlib-list = [
+    {file = "stdlib-list-0.8.0.tar.gz", hash = "sha256:a1e503719720d71e2ed70ed809b385c60cd3fb555ba7ec046b96360d30b16d9f"},
+    {file = "stdlib_list-0.8.0-py3-none-any.whl", hash = "sha256:2ae0712a55b68f3fbbc9e58d6fa1b646a062188f49745b495f94d3310a9fdd3e"},
 ]
 tabulate = [
     {file = "tabulate-0.8.9-py3-none-any.whl", hash = "sha256:d7c013fe7abbc5e491394e10fa845f8f32fe54f8dc60c6622c6cf482d25d47e4"},

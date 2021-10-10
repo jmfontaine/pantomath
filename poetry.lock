@@ -304,6 +304,17 @@ pycodestyle = ">=2.7.0,<2.8.0"
 pyflakes = ">=2.3.0,<2.4.0"
 
 [[package]]
+name = "flake8-absolute-import"
+version = "1.0"
+description = "flake8 plugin to require absolute imports"
+category = "dev"
+optional = false
+python-versions = ">=3.4"
+
+[package.dependencies]
+flake8 = ">=3.0"
+
+[[package]]
 name = "flake8-eradicate"
 version = "1.1.0"
 description = "Flake8 plugin to find commented out code"
@@ -951,7 +962,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "195555fa8eb52a4f6c805c82b3e6a16be60bf6cc4b9f851aeabbddf0d6482b6a"
+content-hash = "c388095530c034a3723bcd36a1ebcf7d59a1ea863aa56c3bb6f533c3a7d695ef"
 
 [metadata.files]
 aiobotocore = [
@@ -1092,6 +1103,10 @@ filelock = [
 flake8 = [
     {file = "flake8-3.9.2-py2.py3-none-any.whl", hash = "sha256:bf8fd333346d844f616e8d47905ef3a3384edae6b4e9beb0c5101e25e3110907"},
     {file = "flake8-3.9.2.tar.gz", hash = "sha256:07528381786f2a6237b061f6e96610a4167b226cb926e2aa2b6b1d78057c576b"},
+]
+flake8-absolute-import = [
+    {file = "flake8-absolute-import-1.0.tar.gz", hash = "sha256:06f2784078d91e52812dac10c77e09515916c4e455c8bb15cc538fb95f20d9a3"},
+    {file = "flake8_absolute_import-1.0-py3-none-any.whl", hash = "sha256:8ea7e60817038133dd7a0d8b5719b955bc22317ab35c7d247b1a2985f96cf8d4"},
 ]
 flake8-eradicate = [
     {file = "flake8-eradicate-1.1.0.tar.gz", hash = "sha256:f5917d6dbca352efcd10c15fdab9c55c48f0f26f6a8d47898b25d39101f170a8"},

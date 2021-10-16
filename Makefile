@@ -1,4 +1,5 @@
 .DEFAULT_GOAL := help
+.PHONY: docs
 .SILENT:
 
 ROOT_DIR := "$(shell pwd)"
@@ -21,6 +22,10 @@ help:
 ## Run black against the Python source code
 black:
 	poetry run black $(ROOT_DIR)/src
+
+## Build documentation
+docs:
+	poetry run sphinx-build -M html "$(ROOT_DIR)/docs/source" "$(ROOT_DIR)/docs/build"
 
 ## Run flake8 against the Python source code
 flake8:

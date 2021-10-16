@@ -9,6 +9,8 @@ from pantomath.provider.aws import AwsDataSource, beautify_tags, data_sources
 
 @data_sources.register("aws_dynamodb_tables")
 class AwsDynamodbTablesDataSource(AwsDataSource):
+    """Data source for AWS DynamoDB tables"""
+
     columns = [
         DataSourceColumn(
             description="The Amazon Resource Name (ARN) that uniquely identifies the table.",  # noqa: E501

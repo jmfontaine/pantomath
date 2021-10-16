@@ -10,6 +10,8 @@ from pantomath.provider.aws import AwsDataSource, DataSourceColumn, data_sources
 
 @data_sources.register("aws_lambda_functions")
 class AwsLambdaFunctionsDataSource(AwsDataSource):
+    """Data source for AWS Lambda functions"""
+
     columns = [
         DataSourceColumn(
             description="The instruction set architecture that the function supports. Architecture is a string array with one of the valid values.",  # noqa: E501

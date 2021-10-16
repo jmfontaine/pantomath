@@ -14,6 +14,8 @@ from pantomath.provider.aws import (
 
 @data_sources.register("aws_ec2_images")
 class AwsEc2ImagesDataSource(AwsDataSource):
+    """Data source for AWS Elastic Compute Cloud (EC2) images (AMI)"""
+
     columns = [
         DataSourceColumn(
             description="The architecture of the image.",

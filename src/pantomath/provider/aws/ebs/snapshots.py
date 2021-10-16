@@ -13,6 +13,8 @@ from pantomath.provider.aws import (
 
 @data_sources.register("aws_ebs_snapshots")
 class AwsEbsSnapshotsDataSource(AwsDataSource):
+    """Data source for AWS Elastic Block Storage (EBS) snapshots"""
+
     columns = [
         DataSourceColumn(
             description="The description for the snapshot",

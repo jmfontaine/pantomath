@@ -9,6 +9,8 @@ from pantomath.provider.aws import AwsDataSource, beautify_tags, data_sources
 
 @data_sources.register("aws_docdb_clusters")
 class AwsDocDbClustersDataSource(AwsDataSource):
+    """Data source for AWS DocumentDB clusters"""
+
     columns = [
         DataSourceColumn(
             description="The Amazon Resource Name (ARN) for the cluster.",

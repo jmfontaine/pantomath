@@ -8,6 +8,8 @@ from pantomath.provider.aws import AwsDataSource, DataSourceColumn, data_sources
 
 @data_sources.register("aws_elasticache_clusters")
 class AwsElasticacheClustersDataSource(AwsDataSource):
+    """Data source for AWS ElastiCache clusters"""
+
     columns = [
         DataSourceColumn(
             description="The ARN of the cache cluster.",

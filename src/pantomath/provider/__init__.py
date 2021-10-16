@@ -1,6 +1,7 @@
 import logging
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
+from typing import Callable
 
 from aiostream import operator, stream
 from sqlalchemy.ext.asyncio.engine import AsyncEngine
@@ -10,7 +11,9 @@ from pantomath.registry import CachedRegistry
 providers = CachedRegistry()
 
 
-def to_sqlalchemy(*args, **kwargs):
+def to_sqlalchemy(*args, **kwargs) -> Callable:
+    """aiostream operator that loads records into the database."""
+
     @operator(pipable=True)
     def _to_sqlalchemy(source, conn, table, chunk_size: int = 1000):
         async def run(chunk):
@@ -25,16 +28,25 @@ def to_sqlalchemy(*args, **kwargs):
 
 @dataclass(frozen=True)  # type: ignore
 class Provider(ABC):
+    """Interacts with the data sources for a provider.
+
+    :param config: Block from the configuration file that is specific to the provider.
+    :param db_engine: Database engine to be used to load data into the database.
+    :param log_level: Log level.
+    """
+
     config: dict = field(default_factory={})  # type: ignore
     db_engine: AsyncEngine = None
     log_level: int = field(default=logging.ERROR)
 
     def __post_init__(self):
+        """Sets some fields after the class initialization."""
         logging.getLogger("asyncio").setLevel(self.log_level)
         logging.getLogger("sqlalchemy").setLevel(self.log_level)
 
     @abstractmethod
     async def collect(self):
+        """Extracts, transforms and loads from the provider data sources into the database."""  # noqa: E501
         pass
 
 

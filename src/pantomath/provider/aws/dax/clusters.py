@@ -9,6 +9,8 @@ from pantomath.provider.aws import AwsDataSource, beautify_tags, data_sources
 
 @data_sources.register("aws_dax_clusters")
 class AwsDaxClustersDataSource(AwsDataSource):
+    """Data source for AWS DynamoDB Accelerator (DAX) clusters"""
+
     columns = [
         DataSourceColumn(
             description="The number of nodes in the cluster that are active.",

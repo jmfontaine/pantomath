@@ -8,6 +8,8 @@ from pantomath.provider.aws import AwsDataSource, DataSourceColumn, data_sources
 
 @data_sources.register("aws_eks_clusters")
 class AwsEksClustersDataSource(AwsDataSource):
+    """Data source for AWS Elastic Kubernetes Service clusters"""
+
     columns = [
         DataSourceColumn(
             description="The Amazon Resource Name (ARN) of the cluster.",

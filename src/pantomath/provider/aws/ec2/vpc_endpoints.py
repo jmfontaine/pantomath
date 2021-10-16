@@ -9,6 +9,8 @@ from pantomath.provider.aws import AwsDataSource, beautify_tags, data_sources
 
 @data_sources.register("aws_ec2_vpc_endpoints")
 class AwsEc2VpcEndpointsDataSource(AwsDataSource):
+    """Data source for AWS Elastic Compute Cloud (EC2) VPC Endpoints"""
+
     columns = [
         DataSourceColumn(
             description="The date and time that the VPC endpoint was created.",

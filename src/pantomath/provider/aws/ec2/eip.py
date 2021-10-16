@@ -8,6 +8,8 @@ from pantomath.provider.aws import AwsDataSource, beautify_tags, data_sources
 
 @data_sources.register("aws_ec2_eip")
 class AwsEc2EipDataSource(AwsDataSource):
+    """Data source for AWS Elastic Compute Cloud (EC2) Elastic IP Addresses (EIP)"""
+
     columns = [
         DataSourceColumn(
             description="The ID of the instance that the address is associated with (if any).",  # noqa: E501

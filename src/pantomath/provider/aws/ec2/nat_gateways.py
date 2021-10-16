@@ -9,6 +9,8 @@ from pantomath.provider.aws import AwsDataSource, beautify_tags, data_sources
 
 @data_sources.register("aws_ec2_nat_gateways")
 class AwsEc2NatGatewaysDataSource(AwsDataSource):
+    """Data source for AWS Elastic Compute Cloud (EC2) NAT Gateways"""
+
     columns = [
         DataSourceColumn(
             description="The date and time the NAT gateway was created.",

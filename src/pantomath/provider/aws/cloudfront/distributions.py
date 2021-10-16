@@ -13,6 +13,8 @@ from pantomath.provider.aws import (
 
 @data_sources.register("aws_cloudfront_distributions")
 class AwsCloudfrontDistributionsDataSource(AwsDataSource):
+    """Data source for AWS CloudFront distributions"""
+
     columns = [
         DataSourceColumn(
             description="The information about CNAMEs (alternate domain names), if any, for this distribution.",  # noqa: E501

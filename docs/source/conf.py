@@ -17,6 +17,15 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # -- Options for AutoAPI -------------------------------------------------
 autoapi_dirs = ["../../src/pantomath"]
+autoapi_member_order = "alphabetical"
+autoapi_options = [
+    "imported-members",
+    "members",
+    "show-inheritance",
+    "show-module-summary",
+    "special-members",
+    "undoc-members",
+]
 autoapi_root = "api"
 autoapi_type = "python"
 autodoc_typehints = "description"

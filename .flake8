@@ -2,3 +2,4 @@
 exclude = __pycache__,.git,.github,.mypy_cache,.pytest_cache,.tox,.venv
 extend-ignore = E203, W503
 max-line-length = 88
+rst-roles = meth

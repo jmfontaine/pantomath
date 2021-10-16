@@ -13,6 +13,8 @@ from pantomath.provider.aws import (
 
 @data_sources.register("aws_redshift_clusters")
 class AwsRedshiftClustersDataSource(AwsDataSource):
+    """Data source for AWS Redshift clusters"""
+
     columns = [
         DataSourceColumn(
             description="The name of the Availability Zone in which the cluster is located.",  # noqa: E501

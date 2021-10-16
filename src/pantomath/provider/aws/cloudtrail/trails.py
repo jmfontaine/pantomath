@@ -7,6 +7,8 @@ from pantomath.provider.aws import AwsDataSource, DataSourceColumn, data_sources
 
 @data_sources.register("aws_cloudtrail_trails")
 class AwsCloudtrailTrailsDataSource(AwsDataSource):
+    """Data source for AWS CloudTrail trails"""
+
     columns = [
         DataSourceColumn(
             description="The ARN of the trail.",

@@ -14,6 +14,8 @@ from pantomath.provider.aws import (
 
 @data_sources.register("aws_rds_instances")
 class AwsRdsInstancesDataSource(AwsDataSource):
+    """Data source for AWS Relational Database Service (RDS) instances"""
+
     columns = [
         DataSourceColumn(
             description="Specifies the allocated storage size specified in gibibytes (GiB).",  # noqa: E501

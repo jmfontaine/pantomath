@@ -24,7 +24,7 @@ from pantomath.registry import CachedRegistry
 data_sources = CachedRegistry()
 
 
-async def call_botocore_method(  # noqa: CFQ002
+async def _call_botocore_method(  # noqa: CFQ002
     session,
     account_id,
     region_name,
@@ -88,7 +88,7 @@ async def call_botocore_method(  # noqa: CFQ002
         raise error
 
 
-async def assume_iam_role(iam_role_arn, session):
+async def _assume_iam_role(iam_role_arn, session):
     async with session.create_client("sts") as sts:
         response = await sts.assume_role(
             RoleArn=iam_role_arn, RoleSessionName="pantomath"
@@ -104,14 +104,14 @@ async def assume_iam_role(iam_role_arn, session):
         return new_session
 
 
-async def get_account_id(session):
+async def _get_account_id(session):
     async with session.create_client("sts") as client:
         response = await client.get_caller_identity()
 
     return response["Account"]
 
 
-async def get_available_regions(session, service_name):
+async def _get_available_regions(session, service_name):
     # KLUDGE: Some global services need to point to a region.
     if service_name in ["cloudfront", "s3"]:
         return ["us-east-1"]
@@ -141,18 +141,19 @@ async def get_available_regions(session, service_name):
     return list(set.intersection(*map(set, [service_regions, account_regions])))
 
 
-async def get_session(account_config):
+async def _get_session(account_config):
     session = aiobotocore.session.AioSession(  # noqa: SC200
         profile=account_config.profile
     )
 
     if account_config.assume_role:
-        session = await assume_iam_role(account_config.assume_role, session)
+        session = await _assume_iam_role(account_config.assume_role, session)
 
     return session  # noqa: R504
 
 
 def beautify_tags(tags: dict) -> Union[dict, None]:
+    """Transform AWS tags so that they are a list of key pairs."""
     if not tags:
         return None
 
@@ -176,17 +177,26 @@ async def from_botocore(
     results_filter=None,
     regions=None,
 ):
+    """Yields coroutines that call an AWS API method, one for each region.
+
+    :param aws_accounts: List of AWS account information
+    :param service_name: Name of the botocore client to use
+    :param method_name: Name of the botocore method to call
+    :param method_parameters: Parameters for the botocore method
+    :param results_filter: JMESPATH expression to filter the results
+    :param regions: List of AWS regions to consider
+    """
     for aws_account in aws_accounts:
-        session = await get_session(aws_account)
-        account_id = await get_account_id(session)
+        session = await _get_session(aws_account)
+        account_id = await _get_account_id(session)
 
         if not regions:
-            regions = await get_available_regions(
+            regions = await _get_available_regions(
                 session=session, service_name=service_name
             )
 
         for region in regions:
-            yield call_botocore_method(
+            yield _call_botocore_method(
                 session=session,
                 account_id=account_id,
                 region_name=region,
@@ -280,6 +290,14 @@ class AWSProvider(Provider):
 
 
 class AwsDataSource(DataSource):
+    """Interacts with an AWS service.
+
+    :param columns: List of columns for the data source.
+    :param enrich_config: Optional list of configuration to data enrichers.
+    :param excluded_default_columns: List of default columns to be omitted.
+    :param extract_config: Optional list of configuration to data extractors.
+    """
+
     enrich_config: dict = field(default_factory=dict, init=True)
     extract_config: dict = field(default_factory=dict, init=False)
 
@@ -311,6 +329,7 @@ class AwsDataSource(DataSource):
             self.__post_init__()
 
     async def enrich(self, source):  # noqa: CFQ004
+        """Enriches data from other sources."""
         # TODO: Properly name this method
         async def wrap_botocore(source, *args, **kwargs):  # noqa: CFQ004
             # Borrowed from https://stackoverflow.com/a/50815499
@@ -343,7 +362,7 @@ class AwsDataSource(DataSource):
             kwargs["add_metadata"] = False
 
             # Return the first element since we are processing a single item at a time
-            return [r async for r in call_botocore_method(*args, **kwargs)][0]
+            return [r async for r in _call_botocore_method(*args, **kwargs)][0]
 
         coros = []
         for config in self.enrich_config.values():

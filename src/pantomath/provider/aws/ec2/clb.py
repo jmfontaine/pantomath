@@ -9,6 +9,8 @@ from pantomath.provider.aws import AwsDataSource, beautify_tags, data_sources
 
 @data_sources.register("aws_ec2_clb")
 class AwsEc2ClbDataSource(AwsDataSource):
+    """Data source for AWS Elastic Compute Cloud (EC2) Classic Load Balancers (CLB)"""
+
     columns = [
         DataSourceColumn(
             description="The Availability Zones for the load balancer.",

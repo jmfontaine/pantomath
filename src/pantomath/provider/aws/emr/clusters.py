@@ -13,6 +13,8 @@ from pantomath.provider.aws import (
 
 @data_sources.register("aws_emr_clusters")
 class AwsEmrClustersDataSource(AwsDataSource):
+    """Data source for AWS Elastic MapReduce (EMR) clusters"""
+
     columns = [
         DataSourceColumn(
             description="The applications installed on this cluster.",

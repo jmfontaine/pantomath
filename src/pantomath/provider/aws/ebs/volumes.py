@@ -13,6 +13,8 @@ from pantomath.provider.aws import (
 
 @data_sources.register("aws_ebs_volumes")
 class AwsEbsVolumesDataSource(AwsDataSource):
+    """Data source for AWS Elastic Block Storage (EBS) volumes"""
+
     columns = [
         DataSourceColumn(
             description="Information about the volume attachments",

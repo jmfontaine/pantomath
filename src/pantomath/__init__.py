@@ -13,6 +13,8 @@ __version__ = pkg_resources.get_distribution(__name__).version
 
 
 class Pantomath:
+    """Main class that coordinates all the other classes."""
+
     def __init__(self, config_path: str, log_level: int = None) -> None:
         if log_level is None:
             log_level = logging.ERROR
@@ -80,4 +82,5 @@ class Pantomath:
             await provider.collect()
 
     def collect(self) -> None:
+        """Extracts, transforms and loads from data sources into the database."""
         asyncio.run(self._async_collect())

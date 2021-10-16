@@ -7,6 +7,8 @@ from pantomath.provider.aws import AwsDataSource, DataSourceColumn, data_sources
 
 @data_sources.register("aws_route53_domains")
 class AwsRoute53DomainsDataSource(AwsDataSource):
+    """Data source for AWS Route53 domains"""
+
     columns = [
         DataSourceColumn(
             description="Indicates whether the domain is automatically renewed upon expiration.",  # noqa: E501

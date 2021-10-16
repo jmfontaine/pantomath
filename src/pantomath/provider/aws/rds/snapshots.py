@@ -14,6 +14,8 @@ from pantomath.provider.aws import (
 
 @data_sources.register("aws_rds_snapshots")
 class AwsRdsSnapshotsDataSource(AwsDataSource):
+    """Data source for AWS Relational Database Service (RDS) snapshots"""
+
     columns = [
         DataSourceColumn(
             description="Specifies the name of the Availability Zone the DB instance was located in at the time of the DB snapshot.",  # noqa: E501

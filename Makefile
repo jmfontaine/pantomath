@@ -48,7 +48,7 @@ lint: flake8 mypy
 
 ## Run mypy against the Python source code
 mypy:
-	poetry run mypy $(ROOT_DIR)/docs $(ROOT_DIR)/src $(ROOT_DIR)/tests
+	poetry run mypy --pretty --show-error-context $(ROOT_DIR)/docs $(ROOT_DIR)/src $(ROOT_DIR)/tests
 
 ## Run tests
 test:

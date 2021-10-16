@@ -17,6 +17,7 @@ datasource
 dax
 dirs
 docdb
+docstrings
 dsn
 ebs
 ec2

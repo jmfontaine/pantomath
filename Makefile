@@ -21,7 +21,7 @@ help:
 
 ## Run black against the Python source code
 black:
-	poetry run black $(ROOT_DIR)/src
+	poetry run black $(ROOT_DIR)/docs $(ROOT_DIR)/src $(ROOT_DIR)/tests
 
 ## Build documentation
 docs:
@@ -29,7 +29,7 @@ docs:
 
 ## Run flake8 against the Python source code
 flake8:
-	poetry run flake8 $(ROOT_DIR)/src
+	poetry run flake8 $(ROOT_DIR)/docs $(ROOT_DIR)/src $(ROOT_DIR)/tests
 
 ## Format the source code
 format: isort black
@@ -41,14 +41,14 @@ install:
 
 ## Run isort against the Python source code
 isort:
-	poetry run isort $(ROOT_DIR)/src
+	poetry run isort $(ROOT_DIR)/docs $(ROOT_DIR)/src $(ROOT_DIR)/tests
 
 ## Lint the source code
 lint: flake8 mypy
 
 ## Run mypy against the Python source code
 mypy:
-	poetry run mypy $(ROOT_DIR)/src
+	poetry run mypy $(ROOT_DIR)/docs $(ROOT_DIR)/src $(ROOT_DIR)/tests
 
 ## Run tests
 test:

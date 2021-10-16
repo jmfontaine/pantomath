@@ -5,6 +5,8 @@ anext
 arg1
 arg2
 arn
+autoapi
+autodoc
 bigint
 clb
 cloudfront
@@ -13,6 +15,7 @@ coros
 ctx
 datasource
 dax
+dirs
 docdb
 dsn
 ebs
@@ -36,9 +39,11 @@ paginator
 pantomath
 pipable
 route53
+rtd
 sqlalchemy
 sqltypes
 sqltypes
 sts
+typehints
 unregister
 vpc

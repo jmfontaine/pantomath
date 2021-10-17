@@ -60,10 +60,11 @@ version_files = ["pyproject.toml:tool.poetry.version"]
 
 [tool.interrogate]
 badge-style = "plastic"
-# KLUDGE: This will be set to 100 when we get there.
-# Until then, set it to the current coverage to avoid regressions.
-fail-under = 50.7
+exclude = ["docs", "tests"]
+fail-under = 100.0
 generate-badge = "assets/badges/interrogate.svg"
+ignore-module = true
+ignore-semiprivate = true
 
 [tool.isort]
 ensure_newline_before_comments = true

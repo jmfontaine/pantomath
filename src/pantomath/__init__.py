@@ -16,6 +16,11 @@ class Pantomath:
     """Main class that coordinates all the other classes."""
 
     def __init__(self, config_path: str, log_level: int = None) -> None:
+        """Constructor.
+
+        :param config_path: Path to the configuration file
+        :param log_level: Log level. Default is ERROR.
+        """
         if log_level is None:
             log_level = logging.ERROR
 

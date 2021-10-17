@@ -5,6 +5,7 @@ class CachedRegistry:
     """A registry that lazily instantiates and caches objects"""
 
     def __init__(self):
+        """Constructor."""
         self._cached_items = {}
         self._factories = {}
 

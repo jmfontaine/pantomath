@@ -1,7 +1,7 @@
 import logging
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
-from typing import Callable
+from typing import Callable, Iterable
 
 from aiostream import operator, stream
 from sqlalchemy.ext.asyncio.engine import AsyncEngine
@@ -51,13 +51,21 @@ class Provider(ABC):
 
 
 class AsyncIteratorWrapper:
-    def __init__(self, iterable):
+    """Allows to asyncronously iterate a synchronous iterator."""
+
+    def __init__(self, iterable: Iterable):
+        """Constructor.
+
+        :param iterable: Iterable to iterate over
+        """
         self._iterable = iter(iterable)
 
     def __aiter__(self):
+        """Implements __aiter__."""
         return self
 
     async def __anext__(self):
+        """Implements __anext__."""
         try:
             return next(self._iterable)
         except StopIteration as ex:

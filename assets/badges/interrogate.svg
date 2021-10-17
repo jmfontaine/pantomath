@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="135" height="18" role="img" aria-label="interrogate: 50.7%">
-    <title>interrogate: 50.7%</title>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="135" height="18" role="img" aria-label="interrogate: 100%">
+    <title>interrogate: 100%</title>
     <linearGradient id="s" x2="0" y2="100%">
         <stop offset="0"  stop-color="#fff" stop-opacity=".7"/>
         <stop offset=".1" stop-color="#aaa" stop-opacity=".1"/>
@@ -11,14 +11,14 @@
     </clipPath>
     <g clip-path="url(#r)">
         <rect width="92" height="18" fill="#555"/>
-        <rect x="92" width="43" height="18" fill="#fe7d37"/>
+        <rect x="92" width="43" height="18" fill="#4c1"/>
         <rect width="135" height="18" fill="url(#s)"/>
     </g>
     <g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" text-rendering="geometricPrecision" font-size="110">
         <text aria-hidden="true" x="570" y="140" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="610">interrogate</text>
         <text x="570" y="130" transform="scale(.1)" fill="#fff" textLength="610">interrogate</text>
-        <text aria-hidden="true" x="1140" y="140" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="370">50.7%</text>
-        <text x="1140" y="130" transform="scale(.1)" fill="#fff" textLength="370">50.7%</text>
+        <text aria-hidden="true" x="1140" y="140" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="330">100%</text>
+        <text x="1140" y="130" transform="scale(.1)" fill="#fff" textLength="330">100%</text>
     </g>
     <g id="logo-shadow" transform="matrix(0.854876,0,0,0.854876,-6.73514,1.232)">
         <g transform="matrix(0.299012,0,0,0.299012,9.70229,-6.68582)">

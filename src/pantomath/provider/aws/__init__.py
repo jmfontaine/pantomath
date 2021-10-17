@@ -210,11 +210,16 @@ async def from_botocore(
 @dataclass(frozen=True)
 @providers.register("aws")
 class AWSProvider(Provider):
+    """Provider that interacts with AWS API"""
+
     def __post_init__(self):
+        """Sets some fields after the class initialization."""
         super().__post_init__()
         logging.getLogger("botocore").setLevel(self.log_level)
 
     async def collect(self):
+        """Extracts, transforms and loads from the provider data sources into the database."""  # noqa: E501
+
         def _build_table(conn, name, columns, excluded_default_columns):
             table = Table(name, MetaData(bind=conn))
 
@@ -251,7 +256,7 @@ class AWSProvider(Provider):
 
             return table
 
-        async def process_data_source(name: str, data_source, aws_accounts):
+        async def _process_data_source(name: str, data_source, aws_accounts):
             async with self.db_engine.begin() as conn:
                 table = _build_table(
                     columns=data_source.columns,
@@ -275,18 +280,18 @@ class AWSProvider(Provider):
             # KLUDGE: Must yield something so that this function is an async generator
             yield None
 
-        async def get_coros():
+        async def _get_coros():
             aws_accounts = self.config["settings"]["accounts"]
 
             for data_source_name in self.config["sources"]:
                 data_source = data_sources.get(data_source_name)
-                yield process_data_source(
+                yield _process_data_source(
                     name=data_source_name,
                     data_source=data_source,
                     aws_accounts=aws_accounts,
                 )
 
-        await flatten(get_coros(), task_limit=20)
+        await flatten(_get_coros(), task_limit=20)
 
 
 class AwsDataSource(DataSource):
@@ -302,6 +307,7 @@ class AwsDataSource(DataSource):
     extract_config: dict = field(default_factory=dict, init=False)
 
     def __init__(self):
+        """Constructor."""
         super().__init__()
 
         columns = []
@@ -331,7 +337,7 @@ class AwsDataSource(DataSource):
     async def enrich(self, source):  # noqa: CFQ004
         """Enriches data from other sources."""
         # TODO: Properly name this method
-        async def wrap_botocore(source, *args, **kwargs):  # noqa: CFQ004
+        async def _wrap_botocore(source, *args, **kwargs):  # noqa: CFQ004
             # Borrowed from https://stackoverflow.com/a/50815499
             def recursiveMap(something, func, *args, **kwargs):
                 if isinstance(something, dict):
@@ -367,7 +373,7 @@ class AwsDataSource(DataSource):
         coros = []
         for config in self.enrich_config.values():
             coros.append(
-                wrap_botocore(
+                _wrap_botocore(
                     source=source,
                     session=source["metadata"]["session"],
                     account_id=source["metadata"]["account_id"],
@@ -383,9 +389,11 @@ class AwsDataSource(DataSource):
         yield output
 
     def extract(self, aws_accounts):
+        """Extracts raw data from the data source."""
         return from_botocore(aws_accounts=aws_accounts, **self.extract_config)
 
     async def transform(self, item):
+        """Refines raw data from the data source."""
         transformed_item = {}
 
         for column in self.columns:

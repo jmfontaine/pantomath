@@ -52,4 +52,14 @@ mypy:
 
 ## Run tests
 test:
-	poetry run pytest
+	poetry run pytest --durations=3
+
+## Run tests and display coverage report
+test-cov:
+	poetry run coverage run --module pytest --quiet
+	poetry run coverage report --show-missing
+
+## Run tests and generate HTML coverage report
+test-cov-html:
+	poetry run coverage run --module pytest --quiet
+	poetry run coverage html --show-contexts

@@ -1,0 +1,13 @@
+[html]
+directory = tests/coverage
+
+[report]
+; KLUDGE: We want to eventually get to 100% but until we get there
+; we set this value to the current coverage to avoid regressions.
+fail_under = 64
+show_missing = true
+skip_empty = true
+
+[run]
+dynamic_context = test_function
+source = pantomath

@@ -1,5 +1,5 @@
 [flake8]
-exclude = __pycache__,.git,.github,.mypy_cache,.pytest_cache,.tox,.venv
+exclude = __pycache__,.git,.github,.mypy_cache,.pytest_cache,.venv
 extend-ignore = E203, W503
 max-line-length = 88
 rst-roles = meth

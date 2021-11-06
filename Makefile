@@ -50,6 +50,10 @@ lint: flake8 mypy
 mypy:
 	poetry run mypy --pretty --show-error-context $(ROOT_DIR)/docs $(ROOT_DIR)/src $(ROOT_DIR)/tests
 
+## Run pydocstyle against the Python source code
+pydocstyle:
+	poetry run pydocstyle
+
 ## Run tests
 test:
 	poetry run pytest --durations=3

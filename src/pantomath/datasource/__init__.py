@@ -1,3 +1,4 @@
+"""Elements shared by data sources."""
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from typing import Callable, List, Union
@@ -7,7 +8,7 @@ import sqlalchemy
 
 @dataclass(frozen=True)
 class DataSourceColumn:
-    """Holds the information for a column in a data source.
+    """Hold the information for a column in a data source.
 
     :param name: The column name.
     :param description: The column description.
@@ -27,7 +28,7 @@ class DataSourceColumn:
 
 @dataclass(frozen=True)  # type: ignore
 class DataSource(ABC):
-    """Interacts with a data source.
+    """Interact with a data source.
 
     :param columns: List of columns for the data source.
     :param excluded_default_columns: List of default columns to be omitted.
@@ -38,9 +39,9 @@ class DataSource(ABC):
 
     @abstractmethod
     async def extract(self):
-        """Extracts raw data from the data source."""
+        """Extract raw data from the data source."""
         pass
 
     async def transform(self, item):
-        """Refines raw data from the data source."""
+        """Refine raw data from the data source."""
         yield item

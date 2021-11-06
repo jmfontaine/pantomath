@@ -1,3 +1,4 @@
+"""Data source for AWS ElastiCache clusters."""
 from typing import Dict, List
 
 from sqlalchemy import DateTime, Integer
@@ -8,7 +9,7 @@ from pantomath.provider.aws import AwsDataSource, DataSourceColumn, data_sources
 
 @data_sources.register("aws_elasticache_clusters")
 class AwsElasticacheClustersDataSource(AwsDataSource):
-    """Data source for AWS ElastiCache clusters"""
+    """Data source for AWS ElastiCache clusters."""
 
     columns = [
         DataSourceColumn(

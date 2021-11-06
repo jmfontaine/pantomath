@@ -1,3 +1,4 @@
+"""Data source for AWS CloudFront distributions."""
 from typing import Dict, List
 
 from sqlalchemy import DateTime
@@ -13,7 +14,7 @@ from pantomath.provider.aws import (
 
 @data_sources.register("aws_cloudfront_distributions")
 class AwsCloudfrontDistributionsDataSource(AwsDataSource):
-    """Data source for AWS CloudFront distributions"""
+    """Data source for AWS CloudFront distributions."""
 
     columns = [
         DataSourceColumn(

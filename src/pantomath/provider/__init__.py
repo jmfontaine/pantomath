@@ -1,3 +1,4 @@
+"""Elements shared by providers."""
 import logging
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
@@ -12,7 +13,7 @@ providers = CachedRegistry()
 
 
 def to_sqlalchemy(*args, **kwargs) -> Callable:
-    """aiostream operator that loads records into the database."""
+    """Aiostream operator that loads records into the database."""
 
     @operator(pipable=True)
     def _to_sqlalchemy(source, conn, table, chunk_size: int = 1000):
@@ -28,7 +29,7 @@ def to_sqlalchemy(*args, **kwargs) -> Callable:
 
 @dataclass(frozen=True)  # type: ignore
 class Provider(ABC):
-    """Interacts with the data sources for a provider.
+    """Interact with the data sources for a provider.
 
     :param config: Block from the configuration file that is specific to the provider.
     :param db_engine: Database engine to be used to load data into the database.
@@ -40,32 +41,32 @@ class Provider(ABC):
     log_level: int = field(default=logging.ERROR)
 
     def __post_init__(self):
-        """Sets some fields after the class initialization."""
+        """Set some fields after the class initialization."""
         logging.getLogger("asyncio").setLevel(self.log_level)
         logging.getLogger("sqlalchemy").setLevel(self.log_level)
 
     @abstractmethod
     async def collect(self):
-        """Extracts, transforms and loads from the provider data sources into the database."""  # noqa: E501
+        """Extract, transforms and loads from the provider data sources into the database."""  # noqa: E501
         pass
 
 
 class AsyncIteratorWrapper:
-    """Allows to asyncronously iterate a synchronous iterator."""
+    """Allow to asyncronously iterate a synchronous iterator."""
 
     def __init__(self, iterable: Iterable):
-        """Constructor.
+        """Initialize the object.
 
         :param iterable: Iterable to iterate over
         """
         self._iterable = iter(iterable)
 
     def __aiter__(self):
-        """Implements __aiter__."""
+        """Implement __aiter__."""
         return self
 
     async def __anext__(self):
-        """Implements __anext__."""
+        """Implement __anext__."""
         try:
             return next(self._iterable)
         except StopIteration as ex:

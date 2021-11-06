@@ -1,3 +1,4 @@
+"""Data source for AWS Relational Database Service (RDS) snapshots."""
 from typing import Dict, List
 
 from sqlalchemy import Boolean, DateTime
@@ -14,7 +15,7 @@ from pantomath.provider.aws import (
 
 @data_sources.register("aws_rds_snapshots")
 class AwsRdsSnapshotsDataSource(AwsDataSource):
-    """Data source for AWS Relational Database Service (RDS) snapshots"""
+    """Data source for AWS Relational Database Service (RDS) snapshots."""
 
     columns = [
         DataSourceColumn(

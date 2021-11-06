@@ -1,3 +1,4 @@
+"""Data source for AWS CloudTrail trails."""
 from typing import Dict, List
 
 from sqlalchemy import Boolean
@@ -7,7 +8,7 @@ from pantomath.provider.aws import AwsDataSource, DataSourceColumn, data_sources
 
 @data_sources.register("aws_cloudtrail_trails")
 class AwsCloudtrailTrailsDataSource(AwsDataSource):
-    """Data source for AWS CloudTrail trails"""
+    """Data source for AWS CloudTrail trails."""
 
     columns = [
         DataSourceColumn(

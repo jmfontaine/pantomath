@@ -1,3 +1,4 @@
+"""Data source for AWS Lambda functions."""
 from typing import Dict, List
 
 import dateutil.parser
@@ -10,7 +11,7 @@ from pantomath.provider.aws import AwsDataSource, DataSourceColumn, data_sources
 
 @data_sources.register("aws_lambda_functions")
 class AwsLambdaFunctionsDataSource(AwsDataSource):
-    """Data source for AWS Lambda functions"""
+    """Data source for AWS Lambda functions."""
 
     columns = [
         DataSourceColumn(

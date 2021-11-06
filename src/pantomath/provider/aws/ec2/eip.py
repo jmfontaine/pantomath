@@ -1,3 +1,4 @@
+"""Data source for AWS Elastic Compute Cloud (EC2) Elastic IP Addresses (EIP)."""
 from typing import Dict, List
 
 from sqlalchemy.dialects.postgresql import JSONB
@@ -8,7 +9,7 @@ from pantomath.provider.aws import AwsDataSource, beautify_tags, data_sources
 
 @data_sources.register("aws_ec2_eip")
 class AwsEc2EipDataSource(AwsDataSource):
-    """Data source for AWS Elastic Compute Cloud (EC2) Elastic IP Addresses (EIP)"""
+    """Data source for AWS Elastic Compute Cloud (EC2) Elastic IP Addresses (EIP)."""
 
     columns = [
         DataSourceColumn(

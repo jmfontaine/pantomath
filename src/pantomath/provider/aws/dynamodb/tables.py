@@ -1,3 +1,4 @@
+"""Data source for AWS DynamoDB tables."""
 from typing import Dict, List
 
 from sqlalchemy import DateTime
@@ -9,7 +10,7 @@ from pantomath.provider.aws import AwsDataSource, beautify_tags, data_sources
 
 @data_sources.register("aws_dynamodb_tables")
 class AwsDynamodbTablesDataSource(AwsDataSource):
-    """Data source for AWS DynamoDB tables"""
+    """Data source for AWS DynamoDB tables."""
 
     columns = [
         DataSourceColumn(

@@ -1,3 +1,4 @@
+"""Data source for AWS Elastic Container Service (ECS) clusters."""
 from typing import Dict, List
 
 from sqlalchemy import Integer
@@ -13,7 +14,7 @@ from pantomath.provider.aws import (
 
 @data_sources.register("aws_ecs_clusters")
 class AwsEcsClustersDataSource(AwsDataSource):
-    """Data source for AWS Elastic Container Service (ECS) clusters"""
+    """Data source for AWS Elastic Container Service (ECS) clusters."""
 
     columns = [
         DataSourceColumn(

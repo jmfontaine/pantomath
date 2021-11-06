@@ -1,3 +1,4 @@
+"""Data source for AWS Elastic Kubernetes Service clusters."""
 from typing import Dict, List
 
 from sqlalchemy import DateTime
@@ -8,7 +9,7 @@ from pantomath.provider.aws import AwsDataSource, DataSourceColumn, data_sources
 
 @data_sources.register("aws_eks_clusters")
 class AwsEksClustersDataSource(AwsDataSource):
-    """Data source for AWS Elastic Kubernetes Service clusters"""
+    """Data source for AWS Elastic Kubernetes Service clusters."""
 
     columns = [
         DataSourceColumn(

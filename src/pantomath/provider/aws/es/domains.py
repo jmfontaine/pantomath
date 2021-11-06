@@ -1,3 +1,4 @@
+"""Data source for AWS Elasticsearch Service (ES) domains."""
 from typing import Dict, List
 
 from sqlalchemy.dialects.postgresql import JSONB
@@ -12,7 +13,7 @@ from pantomath.provider.aws import (
 
 @data_sources.register("aws_es_domains")
 class AwsEsDomainsDataSource(AwsDataSource):
-    """Data source for AWS Elasticsearch Service (ES) domains"""
+    """Data source for AWS Elasticsearch Service (ES) domains."""
 
     columns = [
         DataSourceColumn(

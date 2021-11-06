@@ -1,3 +1,4 @@
+"""Data source for AWS Elastic Compute Cloud (EC2) Classic Load Balancers (CLB)."""
 from typing import Dict, List
 
 from sqlalchemy import DateTime, Text
@@ -9,7 +10,7 @@ from pantomath.provider.aws import AwsDataSource, beautify_tags, data_sources
 
 @data_sources.register("aws_ec2_clb")
 class AwsEc2ClbDataSource(AwsDataSource):
-    """Data source for AWS Elastic Compute Cloud (EC2) Classic Load Balancers (CLB)"""
+    """Data source for AWS Elastic Compute Cloud (EC2) Classic Load Balancers (CLB)."""
 
     columns = [
         DataSourceColumn(

@@ -1,3 +1,4 @@
+"""AWS provider."""
 import asyncio
 import builtins
 import contextlib
@@ -177,7 +178,7 @@ async def from_botocore(
     results_filter=None,
     regions=None,
 ):
-    """Yields coroutines that call an AWS API method, one for each region.
+    """Yield coroutines that call an AWS API method, one for each region.
 
     :param aws_accounts: List of AWS account information
     :param service_name: Name of the botocore client to use
@@ -210,15 +211,15 @@ async def from_botocore(
 @dataclass(frozen=True)
 @providers.register("aws")
 class AWSProvider(Provider):
-    """Provider that interacts with AWS API"""
+    """Provider that interacts with AWS API."""
 
     def __post_init__(self):
-        """Sets some fields after the class initialization."""
+        """Set some fields after the class initialization."""
         super().__post_init__()
         logging.getLogger("botocore").setLevel(self.log_level)
 
-    async def collect(self):
-        """Extracts, transforms and loads from the provider data sources into the database."""  # noqa: E501
+    async def collect(self):  # noqa: D202
+        """Extract, transform and load from the provider data sources into the database."""  # noqa: E501
 
         def _build_table(conn, name, columns, excluded_default_columns):
             table = Table(name, MetaData(bind=conn))
@@ -295,7 +296,7 @@ class AWSProvider(Provider):
 
 
 class AwsDataSource(DataSource):
-    """Interacts with an AWS service.
+    """Interact with an AWS service.
 
     :param columns: List of columns for the data source.
     :param enrich_config: Optional list of configuration to data enrichers.
@@ -307,7 +308,7 @@ class AwsDataSource(DataSource):
     extract_config: dict = field(default_factory=dict, init=False)
 
     def __init__(self):
-        """Constructor."""
+        """Initialize the object."""
         super().__init__()
 
         columns = []
@@ -335,7 +336,7 @@ class AwsDataSource(DataSource):
             self.__post_init__()
 
     async def enrich(self, source):  # noqa: CFQ004
-        """Enriches data from other sources."""
+        """Enriche data from other sources."""
         # TODO: Properly name this method
         async def _wrap_botocore(source, *args, **kwargs):  # noqa: CFQ004
             # Borrowed from https://stackoverflow.com/a/50815499
@@ -389,11 +390,11 @@ class AwsDataSource(DataSource):
         yield output
 
     def extract(self, aws_accounts):
-        """Extracts raw data from the data source."""
+        """Extract raw data from the data source."""
         return from_botocore(aws_accounts=aws_accounts, **self.extract_config)
 
     async def transform(self, item):
-        """Refines raw data from the data source."""
+        """Refine raw data from the data source."""
         transformed_item = {}
 
         for column in self.columns:

@@ -1,3 +1,4 @@
+"""Base elements."""
 import asyncio
 import json
 import logging
@@ -16,7 +17,7 @@ class Pantomath:
     """Main class that coordinates all the other classes."""
 
     def __init__(self, config_path: str, log_level: int = None) -> None:
-        """Constructor.
+        """Initialize the object.
 
         :param config_path: Path to the configuration file
         :param log_level: Log level. Default is ERROR.
@@ -87,5 +88,5 @@ class Pantomath:
             await provider.collect()
 
     def collect(self) -> None:
-        """Extracts, transforms and loads from data sources into the database."""
+        """Extract, transform and load from data sources into the database."""
         asyncio.run(self._async_collect())

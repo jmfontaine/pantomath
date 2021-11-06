@@ -1,3 +1,4 @@
+"""Data source for AWS Elastic Compute Cloud (EC2) instances."""
 from typing import Dict, List
 
 from sqlalchemy import Boolean, DateTime
@@ -9,7 +10,7 @@ from pantomath.provider.aws import AwsDataSource, beautify_tags, data_sources
 
 @data_sources.register("aws_ec2_instances")
 class AwsEc2InstancesDataSource(AwsDataSource):
-    """Data source for AWS Elastic Compute Cloud (EC2) instances"""
+    """Data source for AWS Elastic Compute Cloud (EC2) instances."""
 
     columns = [
         DataSourceColumn(

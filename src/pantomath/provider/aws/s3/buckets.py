@@ -1,3 +1,4 @@
+"""Data source for AWS AWS Simple Storage Service (S3) buckets."""
 from sqlalchemy.dialects.postgresql import JSONB
 
 from pantomath.datasource import DataSourceColumn
@@ -6,7 +7,7 @@ from pantomath.provider.aws import AwsDataSource, beautify_tags, data_sources
 
 @data_sources.register("aws_s3_buckets")
 class AwsS3BucketsDataSource(AwsDataSource):
-    """Data source for AWS AWS Simple Storage Service (S3) buckets"""
+    """Data source for AWS AWS Simple Storage Service (S3) buckets."""
 
     columns = [
         DataSourceColumn(

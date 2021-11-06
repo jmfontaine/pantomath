@@ -1,5 +1,4 @@
-"""CLI commands"""
-
+"""CLI commands."""
 import logging
 import sys
 
@@ -89,7 +88,7 @@ def cli(ctx: click.Context, config_path: str, verbosity: int) -> None:
 )
 @click.pass_context
 def collect(ctx: click.Context) -> None:
-    """Wraps the :meth:`pantomath.Pantomath.collect` function."""
+    """Wrap the :meth:`pantomath.Pantomath.collect` function."""
     pantomath = Pantomath(
         config_path=ctx.obj["config_path"],
         log_level=ctx.obj["log_level"],
@@ -99,5 +98,5 @@ def collect(ctx: click.Context) -> None:
 
 @cli.command()
 def version() -> None:
-    """Displays Pantomath version."""
+    """Display Pantomath version."""
     print(__version__)

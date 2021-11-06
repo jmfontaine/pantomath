@@ -1,3 +1,4 @@
+"""Data source for AWS Elastic MapReduce (EMR) clusters."""
 from typing import Dict, List
 
 from sqlalchemy import Boolean, DateTime, Integer
@@ -13,7 +14,7 @@ from pantomath.provider.aws import (
 
 @data_sources.register("aws_emr_clusters")
 class AwsEmrClustersDataSource(AwsDataSource):
-    """Data source for AWS Elastic MapReduce (EMR) clusters"""
+    """Data source for AWS Elastic MapReduce (EMR) clusters."""
 
     columns = [
         DataSourceColumn(

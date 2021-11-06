@@ -1,3 +1,4 @@
+"""Data source for AWS DynamoDB Accelerator (DAX) clusters."""
 from typing import Dict, List
 
 from sqlalchemy import Integer
@@ -9,7 +10,7 @@ from pantomath.provider.aws import AwsDataSource, beautify_tags, data_sources
 
 @data_sources.register("aws_dax_clusters")
 class AwsDaxClustersDataSource(AwsDataSource):
-    """Data source for AWS DynamoDB Accelerator (DAX) clusters"""
+    """Data source for AWS DynamoDB Accelerator (DAX) clusters."""
 
     columns = [
         DataSourceColumn(

@@ -1,3 +1,4 @@
+"""Data source for AWS DocumentDB clusters."""
 from typing import Dict, List
 
 from sqlalchemy import Boolean, DateTime, Integer, Text
@@ -9,7 +10,7 @@ from pantomath.provider.aws import AwsDataSource, beautify_tags, data_sources
 
 @data_sources.register("aws_docdb_clusters")
 class AwsDocDbClustersDataSource(AwsDataSource):
-    """Data source for AWS DocumentDB clusters"""
+    """Data source for AWS DocumentDB clusters."""
 
     columns = [
         DataSourceColumn(

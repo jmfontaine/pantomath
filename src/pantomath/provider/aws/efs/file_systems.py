@@ -1,3 +1,4 @@
+"""Data source for AWS Elastic File System (EFS) file systems."""
 from typing import Dict, List
 
 from sqlalchemy import DateTime
@@ -10,7 +11,7 @@ from pantomath.provider.aws import AwsDataSource, beautify_tags, data_sources
 
 @data_sources.register("aws_efs_file_systems")
 class AwsEfsFileSystemsDataSource(AwsDataSource):
-    """Data source for AWS Elastic File System (EFS) file systems"""
+    """Data source for AWS Elastic File System (EFS) file systems."""
 
     columns = [
         DataSourceColumn(

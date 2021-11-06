@@ -1,3 +1,4 @@
+"""Data source for AWS Route53 domains."""
 from typing import Dict, List
 
 from sqlalchemy import Boolean, DateTime
@@ -7,7 +8,7 @@ from pantomath.provider.aws import AwsDataSource, DataSourceColumn, data_sources
 
 @data_sources.register("aws_route53_domains")
 class AwsRoute53DomainsDataSource(AwsDataSource):
-    """Data source for AWS Route53 domains"""
+    """Data source for AWS Route53 domains."""
 
     columns = [
         DataSourceColumn(

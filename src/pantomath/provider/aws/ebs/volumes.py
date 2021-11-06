@@ -1,3 +1,4 @@
+"""Data source for AWS Elastic Block Storage (EBS) volumes."""
 from typing import Dict, List
 
 from sqlalchemy import Boolean, DateTime, Integer
@@ -13,7 +14,7 @@ from pantomath.provider.aws import (
 
 @data_sources.register("aws_ebs_volumes")
 class AwsEbsVolumesDataSource(AwsDataSource):
-    """Data source for AWS Elastic Block Storage (EBS) volumes"""
+    """Data source for AWS Elastic Block Storage (EBS) volumes."""
 
     columns = [
         DataSourceColumn(

@@ -1,3 +1,4 @@
+"""Data source for AWS Elastic Compute Cloud (EC2) Application Load Balancers (ALB)."""
 from typing import Dict, List
 
 from sqlalchemy import DateTime
@@ -9,7 +10,7 @@ from pantomath.provider.aws import AwsDataSource, beautify_tags, data_sources
 
 @data_sources.register("aws_ec2_alb")
 class AwsEc2AlbDataSource(AwsDataSource):
-    """Data source for AWS Elastic Compute Cloud (EC2) Application Load Balancers (ALB)"""  # noqa: E501
+    """Data source for AWS Elastic Compute Cloud (EC2) Application Load Balancers (ALB)."""  # noqa: E501
 
     columns = [
         DataSourceColumn(

@@ -1,3 +1,4 @@
+"""Data source for AWS Redshift clusters."""
 from typing import Dict, List
 
 from sqlalchemy import DateTime, Integer
@@ -13,7 +14,7 @@ from pantomath.provider.aws import (
 
 @data_sources.register("aws_redshift_clusters")
 class AwsRedshiftClustersDataSource(AwsDataSource):
-    """Data source for AWS Redshift clusters"""
+    """Data source for AWS Redshift clusters."""
 
     columns = [
         DataSourceColumn(
